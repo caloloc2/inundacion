@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Inundacion</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	
+	<header>
+		<h1>Control de Inundaci&oacute;n</h1>
+
+		<form id="busca">
+			
+			<label for="">Desde</label>
+			<input type="date">	
+			<label for="">hasta</label>
+			<input type="date">				
+
+			<input type="submit" value="Filtrar">
+		</form>
+
+		<ul>
+			<li><a href="#" onclick="return false;" class="icon-sync"></a></li>
+			<li><a href="#" onclick="return false;" class="icon-print"></a></li>
+			<li><a href="#" onclick="return false;" class="icon-surround_sound"></a></li>
+			<li><a href="#" onclick="Salir(); return false;" class="icon-exit_to_app"></a></li>
+		</ul>
+	</header>
+
+	<div class="graficador">
+		<div id="grafico"></div>
+	</div>	
+
+	<footer>
+		<figure><img src="img/logo.jpeg" alt=""></figure>
+	</footer>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
