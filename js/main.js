@@ -9,7 +9,7 @@ function Verificar(){
         success: function(datos) {
             console.log(datos);
             if (datos['estado']){
-            	Graficar();
+            	Leer_Valores();
             }else{
             	window.location.href = 'login.html';
             }
@@ -34,20 +34,68 @@ function Salir(){
     });
 }
 
-function Graficar(){
+$('#busca').submit(function(){
+	Leer_Valores();
+	return false;
+});
+
+function Leer_Valores(){
+	$.ajax({
+        url: 'php/leer_datos.php',
+        data: {
+        	fecha_inicio: document.getElementById('fecha_inicio').value,
+			fecha_final: document.getElementById('fecha_final').value
+        },
+        type: 'POST',        
+        dataType: 'json',        
+        success: function(datos) {
+            console.log(datos);
+            
+            if (datos['estado']){
+            	if (datos['datos'].length>0){
+		            var valores = [];
+		            var val = [];
+		            var lista_valores = '';
+
+		            datos['datos'].forEach(function(item, index){
+		            	val.push(parseFloat(item['valor']));
+						lista_valores += '<tr>';
+						lista_valores += '<td>'+item['fecha']+'</td>';
+						lista_valores += '<td>'+item['hora']+'</td>';
+						lista_valores += '<td>'+item['valor']+'</td>';
+						lista_valores += '</tr>';
+		            });
+
+		            valores.push({
+		            	name: "Rio",
+		            	data: val
+		            })
+
+		            Graficar(valores);
+		            $('#lista_valores').html(lista_valores);
+		            $('.tabla').show();
+            	}else{
+            		$('#grafico').html('');
+            		$('.tabla').hide();
+            	}
+            }
+        },
+        error:function(e){
+            console.log(e.responseText);            
+        }
+    });
+}
+
+function Graficar(valores){
 	Highcharts.chart('grafico', {
 
 	    title: {
-	        text: 'Solar Employment Growth by Sector, 2010-2016'
-	    },
-
-	    subtitle: {
-	        text: 'Source: thesolarfoundation.com'
-	    },
+	        text: 'Niveles de Crecimiento del Caudal'
+	    },	    
 
 	    yAxis: {
 	        title: {
-	            text: 'Number of Employees'
+	            text: 'Nivel del rio'
 	        }
 	    },
 	    legend: {
@@ -60,27 +108,11 @@ function Graficar(){
 	        series: {
 	            label: {
 	                connectorAllowed: false
-	            },
-	            pointStart: 2010
+	            },	            
 	        }
 	    },
 
-	    series: [{
-	        name: 'Installation',
-	        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-	    }, {
-	        name: 'Manufacturing',
-	        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-	    }, {
-	        name: 'Sales & Distribution',
-	        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-	    }, {
-	        name: 'Project Development',
-	        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-	    }, {
-	        name: 'Other',
-	        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-	    }],
+	    series: valores,
 
 	    responsive: {
 	        rules: [{
@@ -98,4 +130,31 @@ function Graficar(){
 	    }
 
 	});
+}
+
+function Alarma(){
+	$.ajax({
+        url: 'php/alarma.php',
+        dataType: 'json',        
+        success: function(datos) {
+            if (datos['estado']){
+            	if (datos['valor']==1){
+            		alert('Alarma Activada');
+            	}else{
+            		alert('Alarma Desactivada');
+            	}
+            }
+        },
+        error:function(e){
+            console.log(e.responseText);            
+        }
+    });	
+}
+
+function Imprimir(){
+	$('header').hide();
+	$('footer').hide();
+	window.print();
+	$('header').show();
+	$('footer').show();
 }

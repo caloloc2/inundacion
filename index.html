@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Inundacion</title>
+	<title>Inundaci&oacute;n</title>
 	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 	<link rel="stylesheet" href="css/main.css">
 </head>
@@ -14,24 +14,43 @@
 		<form id="busca">
 			
 			<label for="">Desde</label>
-			<input type="date">	
+			<input type="date" id="fecha_inicio">	
 			<label for="">hasta</label>
-			<input type="date">				
+			<input type="date" id="fecha_final">				
 
 			<input type="submit" value="Filtrar">
 		</form>
 
 		<ul>
-			<li><a href="#" onclick="return false;" class="icon-sync"></a></li>
-			<li><a href="#" onclick="return false;" class="icon-print"></a></li>
-			<li><a href="#" onclick="return false;" class="icon-surround_sound"></a></li>
+			<li><a href="#" onclick="Leer_Valores(); return false;" class="icon-sync"></a></li>
+			<li><a href="#" onclick="Imprimir(); return false;" class="icon-print"></a></li>
+			<li><a href="#" onclick="Alarma(); return false;" class="icon-surround_sound"></a></li>
 			<li><a href="#" onclick="Salir(); return false;" class="icon-exit_to_app"></a></li>
 		</ul>
 	</header>
 
-	<div class="graficador">
-		<div id="grafico"></div>
-	</div>	
+	<div id="contenedor">
+
+		<div class="graficador">
+			<div id="grafico"></div>
+		</div>
+
+		<div class="tabla" style="display: none;">
+			<table width="400px" style="margin: 0 auto; padding: 1em 0 7em 0;">
+				<thead>
+					<tr>
+						<td><strong>Fecha</strong></td>
+						<td><strong>Hora</strong></td>
+						<td><strong>Valor</strong></td>
+					</tr>
+				</thead>
+				<tbody id="lista_valores">
+					
+				</tbody>
+			</table>
+		</div>
+
+	</div>
 
 	<footer>
 		<figure><img src="img/logo.jpeg" alt=""></figure>

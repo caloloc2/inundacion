@@ -112,15 +112,35 @@ class Meta
      * @param $edad         nueva descripcion 
      * @return PDOStatement
      */
-    public static function Nuevo_Dato($documento, $razon_social, $direccion, $telefono, $celular, $propietario, $correo, $mime, $imagen, $fecha_socio, $fecha_alta, $usuario, $clave, $web)
+    public static function Nuevo_Dato($valor, $fecha, $hora)
     {        
         // Sentencia INSERT
-        $comando = "INSERT INTO afiliados (documento, razon_social, direccion, telefono, celular, propietario, correo, mime, imagen, fecha_socio, fecha_alta, usuario, clave, web) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $comando = "INSERT INTO datos (valor, fecha, hora) VALUES (?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($documento, $razon_social, $direccion, $telefono, $celular, $propietario, $correo, $mime, $imagen, $fecha_socio, $fecha_alta, $usuario, $clave, $web));
+        return $sentencia->execute(array($valor, $fecha, $hora));
+
+    }
+
+     /**
+     * Insertar una nueva meta
+     *
+     * @param $id_test      identificador
+     * @param $nombre       nuevo titulo
+     * @param $edad         nueva descripcion 
+     * @return PDOStatement
+     */
+    public static function Alarma()
+    {        
+        // Sentencia INSERT
+        $comando = "INSERT INTO alarma () VALUES ()";
+
+        // Preparar la sentencia
+        $sentencia = Database::getInstance()->getDb()->prepare($comando);
+
+        return $sentencia->execute(array());
 
     }
 }
