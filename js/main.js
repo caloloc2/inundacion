@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	document.getElementById('fecha_inicio').value = Fechas();
 	document.getElementById('fecha_final').value = Fechas();
-	Verificar();	
+	Verificar();
 })
 
 function Fechas(){
@@ -26,10 +26,28 @@ function Verificar(){
         dataType: 'json',        
         success: function(datos) {
             console.log(datos);
-            if (datos['estado']){
-            	Leer_Valores();
+            if (datos['estado']){            	
+            	setInterval(function(){
+            		Leer_Valores();	
+            	}, 15000)
             }else{
             	window.location.href = 'login.html';
+            }
+        },
+        error:function(e){
+            console.log(e.responseText);            
+        }
+    });
+}
+
+function Vaciar(){
+	$.ajax({
+        url: 'php/vaciar.php',
+        dataType: 'json',        
+        success: function(datos) {
+            console.log(datos);
+            if (datos['estado']){
+            	alert("Todos los valores se han eliminado del sistema.");
             }
         },
         error:function(e){
