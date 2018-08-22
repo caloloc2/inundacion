@@ -1,22 +1,20 @@
-$('#login').submit(function(){	
-	$.ajax({
-        url: 'php/login.php',
-        data: {
-        	usuario: document.getElementById('usuario').value,
-        	pass: document.getElementById('pass').value
-        },
-        async: false,
-        type: 'POST',
-        dataType: 'json',        
-        success: function(datos) {
-            console.log(datos);
-            if (datos['estado']){
-            	window.location.href = 'index.html';
+$('#login').submit(function(){
+    if ((document.getElementById('usuario').value=='vinicioismael1694@gmail.com')&&(document.getElementById('pass').value=='12345')){
+        $.ajax({
+            url: 'php/login.php',            
+            async: false,            
+            dataType: 'json',    
+            success: function(datos) {
+                console.log(datos);                
+                window.location.href = 'index.html';                
+            },
+            error:function(e){
+                console.log(e.responseText);            
             }
-        },
-        error:function(e){
-            console.log(e.responseText);            
-        }
-    });
+        });
+    }else{
+        alert("Credenciales incorrectas.");
+    }
+	
     return false;
 })
