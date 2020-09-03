@@ -112,15 +112,15 @@ class Meta
      * @param $edad         nueva descripcion 
      * @return PDOStatement
      */
-    public static function Nuevo_Dato($valor, $fecha, $hora)
+    public static function Nuevo_Dato($valor, $valor_2, $fecha, $hora)
     {        
         // Sentencia INSERT
-        $comando = "INSERT INTO datos (valor, fecha, hora) VALUES (?,?,?)";
+        $comando = "INSERT INTO datos (valor, valor_2, fecha, hora) VALUES (?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
 
-        return $sentencia->execute(array($valor, $fecha, $hora));
+        return $sentencia->execute(array($valor, $valor_2, $fecha, $hora));
 
     }
 

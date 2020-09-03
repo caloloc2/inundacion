@@ -90,22 +90,28 @@ function Leer_Valores(){
             if (datos['estado']){
             	if (datos['datos'].length>0){
 		            var valores = [];
-		            var val = [];
+					var val = [];
+					var val2 = [];
 		            var lista_valores = '';
 
 		            datos['datos'].forEach(function(item, index){
-		            	val.push(parseFloat(item['valor']));
+						val.push(parseFloat(item['valor']));
+						val2.push(parseFloat(item['valor_2']));
 						lista_valores += '<tr>';
 						lista_valores += '<td>'+item['fecha']+'</td>';
 						lista_valores += '<td>'+item['hora']+'</td>';
 						lista_valores += '<td>'+item['valor']+'</td>';
+						lista_valores += '<td>'+item['valor_2']+'</td>';
 						lista_valores += '</tr>';
 		            });
 
 		            valores.push({
 		            	name: "Rio",
 		            	data: val
-		            })
+		            },{
+						name: "Lluvia",
+		            	data: val2
+					})
 
 		            Graficar(valores);
 		            $('#lista_valores').html(lista_valores);
