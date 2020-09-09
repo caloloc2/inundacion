@@ -121,7 +121,7 @@ function Leer_Valores(){
 		            $('#lista_valores').html(lista_valores);
 		            $('.tabla').show();
             	}else{
-            		$('#grafico').html('');
+            		//$('#grafico').html('');
             		$('.tabla').hide();
             	}
             }
