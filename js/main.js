@@ -113,7 +113,7 @@ function Leer_Valores(){
 		            	data: val2
 					})
 
-		            Graficar(valores);
+		            Graficar('grafico', 'Nivel de Rio', valores);
 		            $('#lista_valores').html(lista_valores);
 		            $('.tabla').show();
             	}else{
@@ -128,8 +128,8 @@ function Leer_Valores(){
     });
 }
 
-function Graficar(valores){
-	Highcharts.chart('grafico', {
+function Graficar(tag, titulo, valores){
+	Highcharts.chart(tag, {
 
 	    title: {
 	        text: 'Niveles de Crecimiento del Caudal'
@@ -137,7 +137,7 @@ function Graficar(valores){
 
 	    yAxis: {
 	        title: {
-	            text: 'Nivel del rio'
+	            text: titulo
 	        }
 	    },
 	    legend: {
