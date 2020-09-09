@@ -89,7 +89,8 @@ function Leer_Valores(){
             
             if (datos['estado']){
             	if (datos['datos'].length>0){
-		            var valores = [];
+					var valores = [];
+					var valores2 = [];
 					var val = [];
 					var val2 = [];
 		            var lista_valores = '';
@@ -108,12 +109,15 @@ function Leer_Valores(){
 		            valores.push({
 		            	name: "Rio",
 		            	data: val
-		            },{
+		            })
+
+					valores2.push({
 						name: "Lluvia",
 		            	data: val2
 					})
 
-		            Graficar('grafico', 'Nivel de Rio', valores);
+					Graficar('grafico', 'Nivel de Rio', valores);
+					Graficar('grafico2', 'Nivel de Lluvia', valores2);
 		            $('#lista_valores').html(lista_valores);
 		            $('.tabla').show();
             	}else{
