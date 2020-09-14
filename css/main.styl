@@ -25,6 +25,70 @@ ul,ol
 	
 body 
 	background-image linear-gradient(#008618, #90F0F1, #008618)
+
+	#modal
+		position: fixed
+		top 0
+		left 0
+		right 0
+		bottom 0
+		background rgba(0,0,0,0.5)
+		z-index 1000
+		display none
+
+		.contenedor
+			width 500px
+			margin 2em auto
+			background white
+			border-radius: 0.4em
+			padding 1em 2em
+
+			p  
+				padding 0.5em 0
+			
+			#listado_usuarios
+				list-style: none
+
+				li 
+					padding 0.1em 0.3em
+					font-size: 15px
+					margin 0.5em 0
+					
+					span 
+						color red
+						font-size 20px
+						cursor pointer
+						padding 1em 0.3em 0 0
+			
+			#nuevo_usuario
+				margin 0
+				padding 0
+
+				.grupo
+					margin 0.5em 0
+
+					label, input
+						display: block
+						width 100%
+
+					label 
+						font-size: 13px
+						color #555
+					
+					input
+						font-size: 15px
+						color #222
+					
+				.btn
+					margin 0.5em 0
+					padding 0.5em 0.7em
+					background primary_dark
+					color white
+				
+				.cancel
+					background #999
+
+
 	
 	.graficador
 		padding 1em 3em

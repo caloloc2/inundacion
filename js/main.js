@@ -70,6 +70,87 @@ function Salir(){
     });
 }
 
+function Usuarios(){
+	$.ajax({
+        url: 'php/usuarios.php',
+        dataType: 'json',        
+        success: function(datos) {
+            console.log(datos);
+            if (datos['estado']){
+				var items = '';
+				datos['datos'].forEach(element => {
+					items+= '<li><span class="icon-delete" onclick="Eliminar('+element['id_usuario']+'); return false;"></span> '+element['nombres']+'</li>';
+				});
+				$("#listado_usuarios").html(items);				
+				$("#modal").fadeIn(350);				
+			}
+        },
+        error:function(e){
+            console.log(e.responseText);            
+        }
+    });
+}
+
+$("#nuevo_usuario").submit(function(e){
+	e.preventDefault();
+	var campos = {
+		nombres : document.getElementById('nombres').value,
+		correo : document.getElementById('correo').value,
+		clave : document.getElementById('clave').value,
+		estado : document.getElementById('estado').value
+	}
+
+	if ((campos.nombres!='') && (campos.correo!='') && (campos.clave!='')){
+		$.ajax({
+			url: 'php/nuevo_usuario.php',
+			dataType: 'json',
+			data: campos,
+			type: "POST",
+			success: function(datos) {
+				console.log(datos);
+				if (datos['estado']){
+					document.getElementById('nombres').value = "";
+					document.getElementById('correo').value = "";
+					document.getElementById('clave').value = "";
+					document.getElementById('estado').value = 0;
+					Usuarios();
+				}else{
+					alert("Ya existe un usuario con el correo asignado. Cambie de correo.");
+				}
+			},
+			error:function(e){
+				console.log(e.responseText);            
+			}
+		});
+	}else{
+		alert("Debe ingresar todos los campos.");
+	}
+})
+
+function Eliminar(id){
+	$.ajax({
+		url: 'php/eliminar_usuario.php',
+		data: {
+			id
+		},
+		type: "POST",
+        dataType: 'json',        
+        success: function(datos) {
+            console.log(datos);
+            if (datos['estado']){
+				Usuarios();
+			}
+        },
+        error:function(e){
+            console.log(e.responseText);            
+        }
+    });
+}
+
+function Cerrar_Modal(){
+	$('#modal').fadeOut(350);
+}
+
 $('#busca').submit(function(){
 	Leer_Valores();
 	return false;

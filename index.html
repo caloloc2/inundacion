@@ -23,13 +23,49 @@
 		</form>
 
 		<ul>
-			<li><a href="#" onclick="Leer_Valores(); return false;" class="icon-sync"></a></li>
-			<li><a href="#" onclick="Vaciar(); return false;" class="icon-close"></a></li>
-			<li><a href="#" onclick="Imprimir(); return false;" class="icon-print"></a></li>
-			<li><a href="#" onclick="Alarma(); return false;" class="icon-surround_sound"></a></li>
-			<li><a href="#" onclick="Salir(); return false;" class="icon-exit_to_app"></a></li>
+			<li><a href="#" title="Usuarios" onclick="Usuarios(); return false;" class="icon-person"></a></li>
+			<li><a href="#" title="Recargar Datos" onclick="Leer_Valores(); return false;" class="icon-sync"></a></li>
+			<li><a href="#" title="Eliminar Datos" onclick="Vaciar(); return false;" class="icon-close"></a></li>
+			<li><a href="#" title="Imprimir" onclick="Imprimir(); return false;" class="icon-print"></a></li>
+			<li><a href="#" title="Alarma" onclick="Alarma(); return false;" class="icon-surround_sound"></a></li>
+			<li><a href="#" title="Salir" onclick="Salir(); return false;" class="icon-exit_to_app"></a></li>
 		</ul>
 	</header>
+
+	<div id="modal">
+		<div class="contenedor">
+			<p>Listado de Usuarios</p>
+			<ul id="listado_usuarios"></ul>
+			<br>
+			<br>
+			<br>
+			<p>Nuevo Usuario</p>
+			<form action="" id="nuevo_usuario">
+				<div class="grupo">
+					<label for="">Nombres Completos</label>
+					<input type="text" id="nombres">
+				</div>
+				<div class="grupo">
+					<label for="">Tipo de Usuario</label>
+					<select id="estado">
+						<option value="0" selected>Administrador</option>
+						<option value="1">Usuario</option>
+					</select>
+				</div>
+				<div class="grupo">
+					<label for="">Correo Electr&oacute;nico</label>
+					<input type="mail" id="correo">
+				</div>
+				<div class="grupo">
+					<label for="">Contrase&ntilde;a</label>
+					<input type="password" id="clave">
+				</div>
+
+				<input type="submit" class="btn" value="Guardar Usuario">
+				<input type="button" class="btn cancel" onclick="Cerrar_Modal(); return false;" value="Cerrar">
+			</form>
+		</div>
+	</div>
 
 	<div id="contenedor">
 
