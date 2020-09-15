@@ -3,6 +3,8 @@
 $respuesta['estado'] = false;
 
 try{
+	require 'meta.php';
+	
 	$correo = $_REQUEST['correo'];
 	$password = $_REQUEST['password'];
 
