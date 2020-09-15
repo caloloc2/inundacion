@@ -9,7 +9,7 @@ try{
 	$inicio = Meta::Consulta_Unico("SELECT * FROM usuarios WHERE ((correo='".$correo."') AND (clave='".$password."'))");
 
 	if ($inicio['id_usuario']!=''){
-		$respuesta['usuario'] = $inicio;		
+		$respuesta = $inicio;		
 	}
 	
 }catch(Exception $e){
