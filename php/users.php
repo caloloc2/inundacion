@@ -14,6 +14,7 @@ try{
         session_start();
         $_SESSION['id_usuario'] = $datos['id_usuario'];
         $_SESSION['usuario'] = $datos['nombres'];
+        $_SESSION['acceso'] = $datos['estado'];
         
         $respuesta['estado'] = true;
     }

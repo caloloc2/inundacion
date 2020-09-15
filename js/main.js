@@ -25,8 +25,11 @@ function Verificar(){
         url: 'php/verificar.php',
         dataType: 'json',        
         success: function(datos) {
-            console.log(datos);
-            if (datos['estado']){            	
+            // console.log(datos);
+            if (datos['estado']){
+				if (datos['acceso']==1){
+					$("#c_usuario").hide();
+				}
             	setInterval(function(){
             		Leer_Valores();	
             	}, 15000)
