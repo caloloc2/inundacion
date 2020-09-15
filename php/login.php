@@ -1,7 +1,5 @@
 <?php
 
-$respuesta['estado'] = false;
-
 try{
 	require 'meta.php';
 
