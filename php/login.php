@@ -3,10 +3,16 @@
 $respuesta['estado'] = false;
 
 try{
-	session_start();
-	$_SESSION['id_usuario'] = 1;
-	$_SESSION['usuario'] = 'Administrador';
-	$respuesta['estado'] = true;		
+	$correo = $_REQUEST['correo'];
+	$password = $_REQUEST['password'];
+
+	$inicio = Meta::Consulta_Unico("SELECT * FROM usuarios WHERE ((correo='".$correo."') AND (clave='".$password."'))");
+
+	if ($inicio['id_usuario']!=''){
+		$respuesta['usuario'] = $inicio;
+		$respuesta['estado'] = true;
+	}
+	
 }catch(Exception $e){
 	$respuesta['error'] = $e->getMessage();
 }
