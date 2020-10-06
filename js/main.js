@@ -186,7 +186,7 @@ function Leer_Valores(){
 						lista_valores += '<td>'+item['fecha']+'</td>';
 						lista_valores += '<td>'+item['hora']+'</td>';
 						lista_valores += '<td>'+item['valor']+'</td>';
-						lista_valores += '<td>'+item['valor_2']+'</td>';
+						lista_valores += '<td>'+item['valor_2']+' %</td>';
 						lista_valores += '</tr>';
 		            });
 
