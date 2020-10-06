@@ -201,7 +201,7 @@ function Leer_Valores(){
 					})
 
 					Graficar('grafico', 'Nivel de Rio', valores);
-					Graficar('grafico2', 'Nivel de Lluvia', valores2);
+					Graficar('grafico2', 'Nivel de Lluvia [%]', valores2);
 		            $('#lista_valores').html(lista_valores);
 		            $('.tabla').show();
             	}else{
