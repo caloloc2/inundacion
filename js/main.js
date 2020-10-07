@@ -200,7 +200,7 @@ function Leer_Valores(){
 		            	data: val2
 					})
 
-					Graficar('grafico', 'Nivel de Rio', valores);
+					Graficar('grafico', 'Nivel de Rio [%]', valores);
 					Graficar('grafico2', 'Nivel de Lluvia [%]', valores2);
 		            $('#lista_valores').html(lista_valores);
 		            $('.tabla').show();
@@ -216,7 +216,7 @@ function Leer_Valores(){
     });
 }
 
-function Graficar(tag, titulo, valores){
+function Graficar(tag, titulo_y, valores){
 	var titulo = "";
 
 	if (tag == 'grafico'){
@@ -224,7 +224,7 @@ function Graficar(tag, titulo, valores){
 	}else{
 		titulo = "Niveles de Lluvia";
 	}
-	
+
 	Highcharts.chart(tag, {
 
 	    title: {
@@ -233,7 +233,7 @@ function Graficar(tag, titulo, valores){
 
 	    yAxis: {
 	        title: {
-	            text: titulo
+	            text: titulo_y
 	        }
 	    },
 	    legend: {
