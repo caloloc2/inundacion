@@ -217,10 +217,18 @@ function Leer_Valores(){
 }
 
 function Graficar(tag, titulo, valores){
+	var titulo = "";
+
+	if (tag == 'grafico'){
+		titulo = "Niveles de Crecimiento del Caudal";
+	}else{
+		titulo = "Niveles de Lluvia";
+	}
+	
 	Highcharts.chart(tag, {
 
 	    title: {
-	        text: 'Niveles de Crecimiento del Caudal'
+	        text: titulo
 	    },	    
 
 	    yAxis: {
